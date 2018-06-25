@@ -28,7 +28,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "concurrently": "^3.5.1",
     "css-loader": "^0.28.11",
-    "electron": "^2.0.0-beta.7",
+    "electron": "^2.0.2",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-flowtype": "^2.44.0",
@@ -61,7 +61,7 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "rmwc": "^1.6.4",
+    "rmwc": "^1.7.1",
     "uuid": "^3.2.1"
   }
 }
