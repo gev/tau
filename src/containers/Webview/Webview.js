@@ -1,4 +1,5 @@
 
+
 import React, { Component } from 'react';
 import styles from './webview.css';
 
@@ -11,7 +12,10 @@ export default class extends Component<Props> {
   init = (webview) => {
     webview.addEventListener('will-navigate', (event) => {
       console.log(event);
-      // event.
+    });
+    webview.addEventListener('new-window', (event) => {
+      webview.src = event.url;
+      console.log(event);
     });
   }
 

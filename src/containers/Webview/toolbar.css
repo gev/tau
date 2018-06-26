@@ -1,0 +1,19 @@
+
+.focussed, .hidden {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  transition-property: transform opacity;
+  transition-duration: 200ms;
+  will-change: transform opacity;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+
+.focussed, .hidden:hover {
+  opacity: 1;
+  transform: translateY(0);
+}

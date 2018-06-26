@@ -1,2 +1,2 @@
 
-export { set, add, create, remove } from './create';
+export { set, push, create, remove } from './create';

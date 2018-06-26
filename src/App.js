@@ -8,7 +8,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import { RMWCProvider } from 'rmwc/Provider';
 import 'material-components-web/dist/material-components-web.min.css';
 import { POOL, FILE } from './constants';
-import { Main } from './containers';
+import { Webview } from './containers';
 import createStore from './store';
 import reducer from './reducer';
 
@@ -24,7 +24,7 @@ export default class extends Component {
         <RMWCProvider>
           <ConnectedRouter history={history}>
             <Switch>
-              <Route exact path="/" component={Main} />
+              <Route exact path="/" component={Webview} />
             </Switch>
           </ConnectedRouter>
         </RMWCProvider>
