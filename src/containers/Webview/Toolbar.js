@@ -23,30 +23,22 @@ class Container extends Component<Props> {
   state = { isFocussed: false }
 
   componentWillReceiveProps({ title }) {
-    this.setState({ value: title });
+    this.input.value = title;
   }
 
-  focus = (event) => {
+  focus = () => {
     const { webview } = this.props;
-    this.setState({
-      isFocussed: true,
-      value: webview().getURL()
-    });
-    event.target.select();
+    this.setState({ isFocussed: true });
+    this.input.value = webview().getURL();
+    this.input.select();
   }
 
   blur = () => {
     const { webview } = this.props;
     setTimeout(() => {
-      this.setState({
-        isFocussed: false,
-        value: webview().getTitle()
-      });
+      this.setState({ isFocussed: false });
+      this.input.value = webview().getTitle();
     }, 100);
-  }
-
-  change = ({ target: { value } }) => {
-    this.setState({ value });
   }
 
   loadURL = (url) => {
@@ -59,7 +51,7 @@ class Container extends Component<Props> {
   }
 
   go = () => {
-    this.loadURL(this.state.value);
+    this.loadURL(this.input.value);
   }
 
   keyPress = ({ which, target: { value } }) => {
@@ -83,9 +75,13 @@ class Container extends Component<Props> {
     webview().goForward();
   }
 
+  address = (input) => {
+    this.input = input;
+  }
+
   render() {
     const { history = [], currentIndex = 0 } = this.props;
-    const { value, isFocussed } = this.state;
+    const { isFocussed } = this.state;
     const url = history[currentIndex];
     const isSecure = url.indexOf('https://') === 0;
     return (
@@ -108,10 +104,9 @@ class Container extends Component<Props> {
                   />
                   <input
                     type="text"
-                    value={value}
+                    ref={this.address}
                     className={styles.address}
                     onKeyPress={this.keyPress}
-                    onChange={this.change}
                     onFocus={this.focus}
                     onBlur={this.blur}
                   />
