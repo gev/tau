@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TextField } from 'rmwc/TextField';
+import { TextField, TextFieldIcon } from 'rmwc/TextField';
 import {
   Toolbar,
   ToolbarRow,
@@ -14,6 +14,8 @@ import { KEY_ENTER } from '../../constants';
 
 type Props = {
   title: ?string;
+  history: ?[];
+  currentIndex: ?null;
   webview: () => void;
 }
 
@@ -62,8 +64,10 @@ class Container extends Component<Props> {
   }
 
   render() {
-    const { title } = this.props;
+    const { title, history = [], currentIndex = 0 } = this.props;
     const { value = title, focussed } = this.state;
+    const url = history[currentIndex];
+    const isSecure = url.indexOf('https://') === 0;
     return (
       <div className={focussed ? styles.focussed : styles.hidden}>
         <Elevation z={6}>
@@ -75,7 +79,7 @@ class Container extends Component<Props> {
               </ToolbarSection>
               <ToolbarSection>
                 <TextField
-                  theme={focussed ? 'text-primary-on-light' : 'text-primary-on-dark'}
+                  theme="text-primary-on-dark"
                   className={focussed ? styles.address : styles.title}
                   value={value}
                   onChange={this.change}
@@ -83,6 +87,12 @@ class Container extends Component<Props> {
                   onFocus={this.focus}
                   onBlur={this.blur}
                   dense
+                  withLeadingIcon={isSecure && (
+                    <TextFieldIcon
+                      theme="text-primary-on-dark"
+                      use="security"
+                    />
+                  )}
                 />
               </ToolbarSection>
               <ToolbarSection shrinkToFit alignEnd>
