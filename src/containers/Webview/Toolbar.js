@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { TextField } from 'rmwc/TextField';
 import {
@@ -10,27 +9,30 @@ import {
   ToolbarIcon,
 } from 'rmwc/Toolbar';
 import { Elevation } from 'rmwc/Elevation';
-import { go, goBack, goForward } from '../../actions';
 import styles from './toolbar.css';
 import { KEY_ENTER } from '../../constants';
 
 type Props = {
-  url: ?string;
-  go: (url: string) => void;
-  goBack: () => void;
-  goForward: () => void;
+  title: ?string;
+  webview: () => void;
 }
 
 class Container extends Component<Props> {
   state = { focussed: false }
 
   focus = () => {
-    const { url } = this.props;
-    this.setState({ focussed: true, value: url });
+    const { webview } = this.props;
+    this.setState({
+      focussed: true,
+      value: webview().getURL()
+    });
   }
 
   blur = () => {
-    this.setState({ focussed: false, value: null });
+    this.setState({
+      focussed: false,
+      value: null
+    });
   }
 
   change = ({ target: { value } }) => {
@@ -38,13 +40,24 @@ class Container extends Component<Props> {
   }
 
   keyPress = (event) => {
+    const { webview } = this.props;
     if (event.which === KEY_ENTER) {
-      this.props.go(event.target.value);
+      webview().loadURL(event.target.value);
     }
   }
 
+  goBack = () => {
+    const { webview } = this.props;
+    webview().goBack();
+  }
+
+  goForward = () => {
+    const { webview } = this.props;
+    webview().goForward();
+  }
+
   render() {
-    const { url } = this.props;
+    const { title } = this.props;
     const { value = '' } = this.state;
     const { focussed } = this.state;
     return (
@@ -53,14 +66,14 @@ class Container extends Component<Props> {
           <Toolbar>
             <ToolbarRow>
               <ToolbarSection alignStart>
-                <ToolbarIcon use="arrow_back" onClick={this.props.goBack} />
-                <ToolbarIcon use="arrow_forward" onClick={this.props.goForward} />
+                <ToolbarIcon use="arrow_back" onClick={this.goBack} />
+                <ToolbarIcon use="arrow_forward" onClick={this.goForward} />
               </ToolbarSection>
               <ToolbarSection shrinkToFit>
                 <TextField
                   theme="text-primary-on-dark"
                   value={value}
-                  placeholder={url}
+                  placeholder={title}
                   onChange={this.change}
                   onKeyPress={this.keyPress}
                   onFocus={this.focus}
@@ -79,7 +92,4 @@ class Container extends Component<Props> {
   }
 }
 
-export default connect(
-  ({ pool: { history = {} } }) => history,
-  (dispatch) => bindActionCreators({ go, goBack, goForward }, dispatch)
-)(Container);
+export default connect(({ pool: { webview = {} } }) => webview)(Container);

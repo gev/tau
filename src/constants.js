@@ -4,6 +4,7 @@ import { remote } from 'electron';
 
 export const POOL = 'pool';
 export const HISTORY = 'history';
+export const WEBVIEW = 'webview';
 
 export const ACTION_GET = 'ACTION_GET';
 export const ACTION_SET = 'ACTION_SET';
