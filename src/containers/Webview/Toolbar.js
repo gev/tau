@@ -25,7 +25,7 @@ class Container extends Component<Props> {
     const { webview } = this.props;
     this.setState({
       focussed: true,
-      value: webview().getURL()
+      value: webview().getTitle()
     });
   }
 
