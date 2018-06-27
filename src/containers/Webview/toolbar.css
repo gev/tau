@@ -18,7 +18,7 @@
   transform: translateY(0);
 }
 
-.address { 
+.address, .title { 
   height: 32px !important;
   width: 75% !important;
   margin: 0 !important;
@@ -26,16 +26,17 @@
   padding: 0px 60px 0px 8px !important;
 }
 
-.address input { 
+.address input, .title input { 
   height: 32px !important;
-  background-color: rgba(255, 255, 255, 0.1) !important;
   text-align: center !important;  
   border: none !important;
   padding: 0px 8px 0px 8px !important;
 }
 
-.title {
-  font-size: 18px !important;
-  padding: 0px 60px 0px 8px !important;
-  margin: 0 !important;
+.address input { 
+  background-color: rgba(255, 255, 255, 1) !important;
+}
+
+.title input { 
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }

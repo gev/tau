@@ -6,8 +6,7 @@ import {
   Toolbar,
   ToolbarRow,
   ToolbarSection,
-  ToolbarIcon,
-  ToolbarTitle
+  ToolbarIcon
 } from 'rmwc/Toolbar';
 import { Elevation } from 'rmwc/Elevation';
 import styles from './toolbar.css';
@@ -30,9 +29,10 @@ class Container extends Component<Props> {
   }
 
   blur = () => {
+    const { webview } = this.props;
     this.setState({
       focussed: false,
-      value: null
+      value: webview().getTitle()
     });
   }
 
@@ -63,8 +63,7 @@ class Container extends Component<Props> {
 
   render() {
     const { title } = this.props;
-    const { value = '' } = this.state;
-    const { focussed } = this.state;
+    const { value = title, focussed } = this.state;
     return (
       <div className={focussed ? styles.focussed : styles.hidden}>
         <Elevation z={6}>
@@ -75,22 +74,16 @@ class Container extends Component<Props> {
                 <ToolbarIcon use="arrow_forward" onClick={this.goForward} />
               </ToolbarSection>
               <ToolbarSection>
-                {
-                  focussed ? (
-                    <TextField
-                      theme="primary text-primary-on-dark"
-                      className={styles.address}
-                      value={value}
-                      onChange={this.change}
-                      onKeyPress={this.keyPress}
-                      onBlur={this.blur}
-                      autoFocus
-                      dense
-                    />
-                  ) : (
-                    <ToolbarTitle className={styles.title} onClick={this.focus}>{title}</ToolbarTitle>
-                  )
-                }
+                <TextField
+                  theme={focussed ? 'text-primary-on-light' : 'text-primary-on-dark'}
+                  className={focussed ? styles.address : styles.title}
+                  value={value}
+                  onChange={this.change}
+                  onKeyPress={this.keyPress}
+                  onFocus={this.focus}
+                  onBlur={this.blur}
+                  dense
+                />
               </ToolbarSection>
               <ToolbarSection shrinkToFit alignEnd>
                 <ToolbarIcon use="menu" />
