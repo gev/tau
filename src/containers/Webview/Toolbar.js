@@ -22,6 +22,10 @@ type Props = {
 class Container extends Component<Props> {
   state = { isFocussed: false }
 
+  componentWillReceiveProps({ title }) {
+    this.setState({ value: title });
+  }
+
   focus = (event) => {
     const { webview } = this.props;
     this.setState({
@@ -80,8 +84,8 @@ class Container extends Component<Props> {
   }
 
   render() {
-    const { title, history = [], currentIndex = 0 } = this.props;
-    const { value = title, isFocussed } = this.state;
+    const { history = [], currentIndex = 0 } = this.props;
+    const { value, isFocussed } = this.state;
     const url = history[currentIndex];
     const isSecure = url.indexOf('https://') === 0;
     return (
@@ -101,10 +105,11 @@ class Container extends Component<Props> {
                     use={isSecure ? 'lock' : 'lock_open'}
                   />
                   <input
-                    className={styles.address}
+                    type="text"
                     value={value}
-                    onChange={this.change}
+                    className={styles.address}
                     onKeyPress={this.keyPress}
+                    onChange={this.change}
                     onFocus={this.focus}
                     onBlur={this.blur}
                   />
