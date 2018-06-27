@@ -18,32 +18,33 @@
   transform: translateY(0);
 }
 
-.address, .title { 
-  height: 32px !important;
-  width: 75% !important;
-  margin: 0px !important;
-  border: none !important;
-  padding: 0px 52px 0px 0px !important;
+.bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  border: none;
+  padding: 0px 52px 0px 0px;
 }
 
-.address input, .title input { 
-  height: 32px !important;
-  border: none !important;
-  padding: 0px 32px 0px 32px !important;
+.address {
+  width: 75%;
+  height: 32px;
+  border: none;
+  text-align: center;  
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
 }
 
-.address input { 
-  text-align: left !important;  
-  background-color: rgba(255, 255, 255, 0.2) !important;
+.address:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  outline: none;
 }
 
-.title input { 
-  text-align: center !important;  
-  background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-.address i, .title i { 
-  top: 4px !important;
-  left: 0px !important;
-  padding: 0px !important;
+.leadingIcon, .trailingIcon { 
+  padding: 8px;
+  margin: 0px;
 }
