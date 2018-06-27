@@ -7,6 +7,7 @@ import {
   ToolbarRow,
   ToolbarSection,
   ToolbarIcon,
+  ToolbarTitle
 } from 'rmwc/Toolbar';
 import { Elevation } from 'rmwc/Elevation';
 import styles from './toolbar.css';
@@ -65,23 +66,29 @@ class Container extends Component<Props> {
         <Elevation z={6}>
           <Toolbar>
             <ToolbarRow>
-              <ToolbarSection alignStart>
+              <ToolbarSection shrinkToFit alignStart>
                 <ToolbarIcon use="arrow_back" onClick={this.goBack} />
                 <ToolbarIcon use="arrow_forward" onClick={this.goForward} />
               </ToolbarSection>
-              <ToolbarSection shrinkToFit>
-                <TextField
-                  theme="text-primary-on-dark"
-                  value={value}
-                  placeholder={title}
-                  onChange={this.change}
-                  onKeyPress={this.keyPress}
-                  onFocus={this.focus}
-                  onBlur={this.blur}
-                  fullwidth
-                />
+              <ToolbarSection>
+                {
+                  focussed ? (
+                    <TextField
+                      theme="primary text-primary-on-dark"
+                      className={styles.address}
+                      value={value}
+                      onChange={this.change}
+                      onKeyPress={this.keyPress}
+                      onBlur={this.blur}
+                      autoFocus
+                      dense
+                    />
+                  ) : (
+                    <ToolbarTitle className={styles.title} onClick={this.focus}>{title}</ToolbarTitle>
+                  )
+                }
               </ToolbarSection>
-              <ToolbarSection alignEnd>
+              <ToolbarSection shrinkToFit alignEnd>
                 <ToolbarIcon use="menu" />
               </ToolbarSection>
             </ToolbarRow>
