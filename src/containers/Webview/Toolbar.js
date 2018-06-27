@@ -90,15 +90,17 @@ class Container extends Component<Props> {
     const isSecure = url.indexOf('https://') === 0;
     return (
       <div className={isFocussed ? styles.focussed : styles.hidden}>
+        <div className={styles.background} />
+        <div className={styles.overlay} />
         <Elevation z={6}>
-          <Toolbar>
+          <Toolbar className={styles.toolbar}>
             <ToolbarRow>
               <ToolbarSection shrinkToFit alignStart>
                 <ToolbarIcon use="arrow_back" onClick={this.goBack} />
                 <ToolbarIcon use="arrow_forward" onClick={this.goForward} />
               </ToolbarSection>
               <ToolbarSection>
-                <div className={styles.bar}>
+                <div className={isFocussed ? styles.focus : styles.bar}>
                   <Icon
                     className={styles.leadingIcon}
                     theme="text-primary-on-dark"
