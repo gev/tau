@@ -40,10 +40,14 @@ class Container extends Component<Props> {
     this.setState({ value });
   }
 
-  keyPress = (event) => {
+  keyPress = ({ which, target: { value } }) => {
     const { webview } = this.props;
-    if (event.which === KEY_ENTER) {
-      webview().loadURL(event.target.value);
+    if (which === KEY_ENTER) {
+      try {
+        webview().loadURL(new URL(value).toString());
+      } catch (e) {
+        webview().loadURL(`http://${value}`);
+      }
     }
   }
 
