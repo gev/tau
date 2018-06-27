@@ -25,10 +25,10 @@ const set = (id, payload) => (dispatch) => {
   }));
 };
 
-const push = (id, prev, attribute, value) => (dispatch) => {
+const add = (id, prev, attribute, value) => (dispatch) => {
   dispatch(set(id, {
     [attribute]: prev && prev[attribute] ? [...prev[attribute], value] : [value]
   }));
 };
 
-export default { set, push };
+export default { set, add };
