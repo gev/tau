@@ -76,7 +76,9 @@ class Container extends Component<Props> {
   }
 
   address = (input) => {
+    const { title } = this.props;
     this.input = input;
+    this.input.value = title;
   }
 
   render() {

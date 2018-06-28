@@ -7,7 +7,13 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    show: false
+    show: false,
+    width: 1280,
+    height: 720,
+    // fullscreen: true,
+    // fullscreenWindowTitle: false,
+    // fullscreenable: false,
+    // titleBarStyle: 'hidden'
   });
 
   mainWindow.setMenu(null);
