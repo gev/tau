@@ -26,18 +26,18 @@ class Container extends Component<Props> {
 
   init = (webview) => {
     this.webview = webview;
-    this.webview.addEventListener('dom-ready', () => {
-      const { history = [], currentIndex = 0 } = this.props;
-      const webContents = this.webview.getWebContents();
-      webContents.history = history;
-      webContents.goToIndex(currentIndex);
-      this.webview.addEventListener('did-navigate', this.sync);
-      this.webview.addEventListener('did-navigate-in-page', this.sync);
-      this.webview.addEventListener('page-title-updated', this.props.setTitle);
-      this.webview.addEventListener('new-window', ({ url }) => {
-        webContents.loadURL(url);
-      });
-    }, { once: true });
+    // this.webview.addEventListener('dom-ready', () => {
+    //   const { history = [], currentIndex = 0 } = this.props;
+    //   const webContents = this.webview.getWebContents();
+    //   webContents.history = history;
+    //   // webContents.goToIndex(currentIndex);
+    //   // this.webview.addEventListener('did-navigate', this.sync);
+    //   // this.webview.addEventListener('did-navigate-in-page', this.sync);
+    //   // this.webview.addEventListener('page-title-updated', this.props.setTitle);
+    //   // this.webview.addEventListener('new-window', ({ url }) => {
+    //   //   webContents.loadURL(url);
+    //   // });
+    // }, { once: true });
   }
 
   getWebview = () => this.webview
@@ -57,7 +57,7 @@ class Container extends Component<Props> {
 }
 
 export default connect(
-  ({ pool: { webview = {} } }) => webview,
+  ({ pool }) => pool.webview || {},
   (dispatch) => bindActionCreators({
     setTitle: ({ title }) => set(WEBVIEW, { title }),
     sync: ({ history, currentIndex }) => set(WEBVIEW, { history, currentIndex })

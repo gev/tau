@@ -84,7 +84,7 @@ class Container extends Component<Props> {
   render() {
     const { history = [], currentIndex = 0 } = this.props;
     const { isFocussed } = this.state;
-    const url = history[currentIndex];
+    const url = history[currentIndex] || '';
     const isSecure = url.indexOf('https://') === 0;
     return (
       <div className={isFocussed ? styles.focussed : styles.hidden}>
@@ -131,4 +131,4 @@ class Container extends Component<Props> {
   }
 }
 
-export default connect(({ pool: { webview = {} } }) => webview)(Container);
+export default connect(({ pool }) => pool.webview || {})(Container);
