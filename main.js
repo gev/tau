@@ -13,7 +13,11 @@ function createWindow() {
     // fullscreen: true,
     // fullscreenWindowTitle: false,
     // fullscreenable: false,
-    // titleBarStyle: 'hidden'
+    // titleBarStyle: 'hidden',
+    webPreferences: {
+      nodeIntegration: true,
+      webviewTag: true
+    }
   });
 
   mainWindow.setMenu(null);
