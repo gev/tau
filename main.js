@@ -13,8 +13,8 @@ function createWindow() {
     fullscreen: true,
     // fullscreenWindowTitle: false,
     // fullscreenable: false,
-    frame: false,
-    // titleBarStyle: 'hidden',
+    // frame: false,
+    titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true,
       webviewTag: true
