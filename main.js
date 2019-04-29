@@ -14,7 +14,7 @@ function createWindow() {
     // fullscreen: true,
     // fullscreenWindowTitle: false,
     // fullscreenable: false,
-    // frame: false,
+    frame: false,
     // titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true,
