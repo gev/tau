@@ -10,7 +10,7 @@ function createWindow() {
     show: false,
     width: 1280,
     height: 720,
-    fullscreen: true,
+    // fullscreen: true,
     // fullscreenWindowTitle: false,
     // fullscreenable: false,
     // frame: false,
