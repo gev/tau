@@ -35,10 +35,8 @@ class Container extends Component<Props> {
 
   blur = () => {
     const { webview } = this.props;
-    setTimeout(() => {
-      this.setState({ isFocussed: false });
-      this.input.value = webview().getTitle();
-    }, 100);
+    this.setState({ isFocussed: false });
+    this.input.value = webview().getTitle();
   }
 
   loadURL = (url) => {
