@@ -10,11 +10,12 @@ function createWindow() {
     show: false,
     width: 1280,
     height: 720,
+    type: 'toolbar',
     // fullscreen: true,
-    fullscreenWindowTitle: false,
-    fullscreenable: false,
+    // fullscreenWindowTitle: false,
+    // fullscreenable: false,
     // frame: false,
-    titleBarStyle: 'hidden',
+    // titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true,
       webviewTag: true
