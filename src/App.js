@@ -13,7 +13,7 @@ import createStore from './store';
 import reducer from './reducer';
 
 const history = createHashHistory();
-const pool = JSON.parse(fs.readFileSync(FILE));
+const pool = {};//JSON.parse(fs.readFileSync(FILE));
 
 const store = createStore(reducer, { [POOL]: pool }, history);
 
