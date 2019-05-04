@@ -11,11 +11,6 @@ function createWindow() {
     width: 1280,
     height: 720,
     // fullscreen: true,
-    // fullscreenWindowTitle: false,
-    // fullscreenable: false,
-    // frame: false,
-    tabbingIdentifier: 'tab',
-    // titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true,
       webviewTag: true
@@ -29,8 +24,6 @@ function createWindow() {
     protocol: 'file:',
     slashes: true
   }));
-
-  mainWindow.toggleTabBar();
 
   // mainWindow.webContents.openDevTools();
 
