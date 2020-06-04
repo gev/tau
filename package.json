@@ -54,7 +54,7 @@
     "ip": "gev/ip",
     "node-fetch": "^2.1.2",
     "react": "^16.8.6",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.4.2",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
