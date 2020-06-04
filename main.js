@@ -11,6 +11,10 @@ function createWindow() {
     width: 1280,
     height: 720,
     // fullscreen: true,
+    // fullscreenWindowTitle: false,
+    fullscreenable: false,
+    // frame: false,
+    // titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true,
       webviewTag: true
@@ -25,7 +29,7 @@ function createWindow() {
     slashes: true
   }));
 
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', () => {
     mainWindow = null;
